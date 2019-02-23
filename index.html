@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Night Coders Club</title>
+    <meta name="description" content="Night Coders">
+    <meta name="application-name" content="Night Coders">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Night Coders">
+    <style>
+        html, body {
+
+        height: 100%;
+        }
+    body {
+        background: black;
+        color: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        overflow: hidden;
+        font-family: monospace;
+    }
+    </style>
+    
+    <script src="ansilove.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        AnsiLove.render("intro.ans", function (canvas, sauce) {
+    document.body.appendChild(canvas);
+    console.log(sauce);
+}, {"font": "80x25", "bits": "8", "icecolors": 0, "columns": 80, "thumbnail": 0});
+</script>
+</head>
+<body>
+</body>
+</html>
