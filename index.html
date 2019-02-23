@@ -1,42 +1,123 @@
 <!DOCTYPE html>
 <html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Night Coders Club</title>
-    <meta name="description" content="Night Coders">
-    <meta name="application-name" content="Night Coders">
-    <meta name="theme-color" content="#000000">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Night Coders">
+    <meta name="description" content="Night Coders" />
+    <meta name="application-name" content="Night Coders" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Night Coders" />
     <style>
-        html, body {
-
+      html,
+      body {
         height: 100%;
-        }
-    body {
+      }
+      body {
         background: black;
         color: green;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
         overflow: hidden;
+        justify-content: center;
         font-family: monospace;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+      }
+      canvas {
+        vertical-align: bottom;
+      }
+      #header {
+        max-height: 330px;
+      }
+
+      /*
+    body {
+        background: black;
     }
+    .center {
+        margin: 0 auto;
+        background-color: black;
+        padding: 16px;
+    }
+    #header {
+        width: 720px;
+        height: 464px;
+    }
+    #content {
+        width: 720px;
+        height: 384px;
+        overflow: hidden;
+        opacity: 1;
+    }
+    .visible {
+        opacity:1!important;
+    }*/
     </style>
-    
+
     <script src="ansilove.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <section>
+      <div class="center" id="header"></div>
+      <div class="center" id="content"></div>
+    </section>
     <script>
-        AnsiLove.render("intro.ans", function (canvas, sauce) {
-    document.body.appendChild(canvas);
-    console.log(sauce);
-}, {"font": "80x25", "bits": "8", "icecolors": 0, "columns": 80, "thumbnail": 0});
-</script>
-</head>
-<body>
-</body>
+      var controller, retina;
+
+      retina = window.devicePixelRatio > 1;
+
+      // AnsiLove.render("intro.ans", function (canvas, sauce) {
+      //     document.getElementById("header").appendChild(canvas);
+      // }, {"bits": "9", "2x": (retina ? 1 : 0)});
+
+      controller = AnsiLove.animate(
+        "header.ans",
+        function(canvas, sauce) {
+          document.getElementById("header").appendChild(canvas);
+          controller.play(8400, function() {
+            controller = AnsiLove.animate(
+              "content.ans",
+              function(canvas, sauce) {
+                document.getElementById("content").appendChild(canvas);
+                controller.play(8400);
+              },
+              { bits: "9", "2x": retina ? 1 : 0 }
+            );
+          });
+        },
+        { bits: "9", "2x": retina ? 1 : 0 }
+      );
+
+      /*
+AnsiLove.render("content.ans", function (canvas, sauce) {
+                document.getElementById("content").appendChild(canvas);
+            }, {"bits": "9", "2x": (retina ? 1 : 0)});
+*/
+
+      // retina = window.devicePixelRatio > 1;
+      // AnsiLove.render("content.ans", function (canvas, sauce) {
+      //        document.getElementById("content").appendChild(canvas);
+      //     }, {"bits": "9", "2x": (retina ? 1 : 0)});
+      // controller = AnsiLove.animate("intro.ans", function (canvas, sauce) {
+      //     document.getElementById("header").appendChild(canvas);
+      //     controller.play(8400, function(){
+      //         document.getElementById("content").classList.add('visible');
+      //     });
+      // }, {"bits": "9",  "2x": (!retina ? 0 : 1)});
+
+      // AnsiLove.render("intro.ans", function (canvas, sauce) {
+      //     document.body.appendChild(canvas);
+      //     console.log(sauce);
+      // }, {"2x": 1});
+    </script>
+  </body>
 </html>
