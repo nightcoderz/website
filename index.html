@@ -36,31 +36,8 @@
         vertical-align: bottom;
       }
       #header {
-        max-height: 330px;
+        max-height: 280px;
       }
-
-      /*
-    body {
-        background: black;
-    }
-    .center {
-        margin: 0 auto;
-        background-color: black;
-        padding: 16px;
-    }
-    #header {
-        width: 720px;
-        height: 464px;
-    }
-    #content {
-        width: 720px;
-        height: 384px;
-        overflow: hidden;
-        opacity: 1;
-    }
-    .visible {
-        opacity:1!important;
-    }*/
     </style>
 
     <script src="ansilove.js" type="text/javascript" charset="utf-8"></script>
@@ -72,13 +49,7 @@
     </section>
     <script>
       var controller, retina;
-
       retina = window.devicePixelRatio > 1;
-
-      // AnsiLove.render("intro.ans", function (canvas, sauce) {
-      //     document.getElementById("header").appendChild(canvas);
-      // }, {"bits": "9", "2x": (retina ? 1 : 0)});
-
       controller = AnsiLove.animate(
         "header.ans",
         function(canvas, sauce) {
@@ -96,28 +67,6 @@
         },
         { bits: "9", "2x": retina ? 1 : 0 }
       );
-
-      /*
-AnsiLove.render("content.ans", function (canvas, sauce) {
-                document.getElementById("content").appendChild(canvas);
-            }, {"bits": "9", "2x": (retina ? 1 : 0)});
-*/
-
-      // retina = window.devicePixelRatio > 1;
-      // AnsiLove.render("content.ans", function (canvas, sauce) {
-      //        document.getElementById("content").appendChild(canvas);
-      //     }, {"bits": "9", "2x": (retina ? 1 : 0)});
-      // controller = AnsiLove.animate("intro.ans", function (canvas, sauce) {
-      //     document.getElementById("header").appendChild(canvas);
-      //     controller.play(8400, function(){
-      //         document.getElementById("content").classList.add('visible');
-      //     });
-      // }, {"bits": "9",  "2x": (!retina ? 0 : 1)});
-
-      // AnsiLove.render("intro.ans", function (canvas, sauce) {
-      //     document.body.appendChild(canvas);
-      //     console.log(sauce);
-      // }, {"2x": 1});
     </script>
   </body>
 </html>
